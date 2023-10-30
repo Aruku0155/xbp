@@ -1,30 +1,34 @@
 import random
 
-# 1から100までのランダムな数を選ぶ
-target_number = random.randint(1, 9)
+def main():
+    target_number = random.randint(1, 9)
+    attempts = 0
+    max_attempts = 3
 
-# プレイヤーにゲームの説明を表示
-print("1から9までの数を当ててください。")
+    print("1から9の数を当ててください。3回以内に正解しなければ失格です。")
 
-# プレイヤーが正しい数を当てるまで繰り返す
-attempts = 0
-while True:
-    try:
-        # プレイヤーに数を入力させる
-        guess = int(input("数を入力してください: "))
+    while attempts < max_attempts:
+        try:
+            guess = int(input("予想する数字を入力してください: "))
+        except ValueError:
+            print("無効な入力です。整数を入力してください。")
+            continue
+
+        if guess < 1 or guess > 9:
+            print("1から9の範囲内で予想してください。")
+            continue
+
         attempts += 1
 
-        # プレイヤーの予想を評価する
-        if guess < target_number:
-            print("bad")
-        elif guess > target_number:
-            print("bad")
-        else:
-            print(f"おめでとう！！your winner{target_number} が答えです。{attempts}回目で当てました！")
+        if guess == target_number:
+            print(f"おめでとうございます！正解です。{attempts}回目で当てました。")
             break
+        else:
+            if attempts < max_attempts:
+                print("不正解です。もう一度トライしてください。")
 
-    except ValueError:
-        print("無効な入力です。整数を入力してください。")
+    if attempts >= max_attempts:
+        print(f"失格です。正解は{target_number}でした。")
 
-# ゲーム終了
-
+if __name__ == "__main":
+    main()

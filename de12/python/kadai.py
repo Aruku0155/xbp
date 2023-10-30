@@ -1,26 +1,26 @@
 import random
 
 def main():
-    # 当たりの数字をランダムに選ぶ
-    winning_number = random.randint(1, 9)
+    target_number = random.randint(1, 9)
+    max_attempts = 3
+    attempts = 0
 
-    print("1から9までの数字があります。1つだけが当たりです。当たりの数字を当ててください！")
+    print("1から9までの数字を当てるゲームです。")
+    print(f"3回以内にランダムな数字を当ててください。")
 
-    while True:
-        try:
-            guess = int(input("予想する数字を入力してください: "))
-            if guess < 1 or guess > 9:
-                print("1から9の数字を選んでください。")
-                continue
-        except ValueError:
-            print("無効な入力です。整数を入力してください。")
-            continue
+    while attempts < max_attempts:
+        guess = int(input("予想した数字を入力してください: "))
 
-        if guess == winning_number:
-            print(f"おめでとうございます！当たりの数字は {winning_number} でした。")
+        if guess == target_number:
+            print("おめでとうございます！正解です。")
             break
         else:
-            print("はずれです。もう一度試してみてください。")
+            print("不正解です。")
+            attempts += 1
 
-if __name__ == "__main__":
+    if attempts == max_attempts:
+        print(f"残念！正解は {target_number} でした。")
+
+if __name__ == "__main":
     main()
+
