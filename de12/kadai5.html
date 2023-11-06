@@ -18,15 +18,37 @@
      それをプログラミングにすることができませんでした。<br>
      今回は都市を入力するとその都市の気温を自動で出してくれるところまでできました。<br>
      <br>
-     <img src="./images/気温.html" width="30%"> <br>
+     <pre><code>
+        import requests
+
+city = input("都市を教えてください。")
+API_KEY = "02c25dd9f56a16b6187f18e83731704d"  # あなたのAPI Keyを入力。
+
+api = f"http://api.openweathermap.org/data/2.5/weather?units=metric&q={city}&APPID={API_KEY}"
+
+response = requests.get(api)
+
+if response.status_code == 200:
+    data = response.json()
+    temperature = data['main']['temp']
+    print(f"{city}の現在の気温は{temperature}°Cです。")
+else:
+    print("天気情報を取得できませんでした。")
+    </code></pre>
+        
      <br>
 
      <h2>反省点</h2><br>
      今回は持ったよりプログラミングが難しくチャットGTPで調べても自分の望んでいる物がでて来なかった<br>
      班の仲間同士で調べる物を分担してやったが自分たちがやりたかったところまでできなかったので、<br>
      引き続き調べて完成させたいです。<br>
-     
-    参考サイト<br>
+    <br>
+    <br>
+    <br>
+
+    
+    
+    <h3> 参考サイト</h3><br>
     <a href="https://www.youtube.com/watch?v=hBUcbvz1m9g&t=143s">Pythonで画像を自動で一括リサイズ!</a><br>
     <a href="https://blog.kikagaku.co.jp/pillow#i-2">Python で画像ファイルの読み込み・表示・保存する方法を解説!【Pillow 編】</a><br><br>
     
