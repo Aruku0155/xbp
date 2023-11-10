@@ -18,24 +18,7 @@
      それをプログラミングにすることができませんでした。<br>
      今回は都市を入力するとその都市の気温を自動で出してくれるところまでできました。<br>
      <br>
-     <pre><code>
-        import requests
-
-city = input("都市を教えてください。")
-API_KEY = "02c25dd9f56a16b6187f18e83731704d"  # あなたのAPI Keyを入力。
-
-api = f"http://api.openweathermap.org/data/2.5/weather?units=metric&q={city}&APPID={API_KEY}"
-
-response = requests.get(api)
-
-if response.status_code == 200:
-    data = response.json()
-    temperature = data['main']['temp']
-    print(f"{city}の現在の気温は{temperature}°Cです。")
-else:
-    print("天気情報を取得できませんでした。")
-    </code></pre>
-        
+     <img src="./images/気温.html" width="300" height="300"><br>
      <br>
 
      <h2>反省点</h2><br>
